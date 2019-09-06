@@ -14,27 +14,36 @@
 //</div>
 //</div>
 
-// function getGithubData(username){
-
    
     axios.get('https://lambda-times-backend.herokuapp.com/topics')
     
         .then(response => { // THE RESOLVED VALUE
             // debugger;
-            document.body.innerText=response.data.topics;
+            // document.body.innerText=response.data.topics;
+
+            //This iterates over the topics object
+            response.data.topics.forEach(item =>{
+                const newTab = topicsCard(item);
+
+                //This appends newTab component to DOM
+                topicsBigContainer.appendChild(newTab);
+
+            });
                 
             })
 
         .catch(error => 
             // debugger
-            document.body.innerText = error;
+            // document.body.innerText = error;
             // the sad path
             // this code runs if the promise fails
 
             console.error(error)
             );
     
+    const topicsBigContainer = document.querySelector('.topics');
 
+    //Function for component
     function topicsCard(data){
 
         const topicsContainer = document.createElement('div');
