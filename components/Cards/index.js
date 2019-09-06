@@ -8,15 +8,10 @@
 //
 // <div class="card">
 //   <div class="headline">{Headline of article}</div>
-
 //   <div class="author">
-
 //     <div class="img-container">
-
 //       <img src={url of authors image} />
-
 //     </div>
-
 //     <span>By {authors name}</span>
 //   </div>
 // </div>
@@ -24,6 +19,33 @@
 // Create a card for each of the articles and add the card to the DOM.
 
 //
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+    
+        .then(response => { // THE RESOLVED VALUE
+            // debugger;
+            // document.body.innerText=response.data.topics;
+
+            //This iterates over the topics object
+            response.data.topics.forEach(item =>{
+                const newTab = topicsCard(item);
+
+                //This appends newTab component to DOM
+                topicsBigContainer.appendChild(newTab);
+
+            });
+                
+            })
+
+        .catch(error => 
+            // debugger;
+            // document.body.innerText = error;
+            // the sad path
+            // this code runs if the promise fails
+
+            console.error(error)
+            );
+    
 
 function makeCard(data) {
   const divCard = document.createElement("div");
