@@ -18,34 +18,32 @@
 //
 // Create a card for each of the articles and add the card to the DOM.
 
-//
-
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
     
         .then(response => { // THE RESOLVED VALUE
             // debugger;
-            // document.body.innerText=response.data.topics;
+            // document.body.innerText=response.data.articles;
 
             //This iterates over the topics object
-            response.data.topics.forEach(item =>{
-                const newTab = topicsCard(item);
-
-                //This appends newTab component to DOM
-                topicsBigContainer.appendChild(newTab);
-
-            });
+            Object.values(response.data.articles).forEach(item =>{
+                //debugger;
+                item.forEach(article =>{
+                    //article.headline;
+                    //debugger
+                    topicsBiggerContainer.appendChild(makeCard(article));
+                })
                 
             })
-
-        .catch(error => 
+            })
+                
+        .catch(error => {
             // debugger;
-            // document.body.innerText = error;
+            document.body.innerText = error;
             // the sad path
             // this code runs if the promise fails
-
-            console.error(error)
-            );
-    
+            
+        })
+    const topicsBiggerContainer = document.querySelector('.cards-container');
 
 function makeCard(data) {
   const divCard = document.createElement("div");
@@ -62,10 +60,10 @@ function makeCard(data) {
   imageContainer.classList.add("img-container");
 
   const imageCard = document.createElement("img");
-  imageCard.textContent = `${authorPhoto}`;
+  imageCard.textContent = `${data.authorPhoto}`;
 
   const authorsNameCard = document.createElement("span");
-  authorsNameCard.textContent = `By ${authorName}`;
+  authorsNameCard.textContent = `By ${data.authorName}`;
 
   divCard.appendChild(headlineCard);
   divCard.appendChild(authordivCard);

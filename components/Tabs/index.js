@@ -14,6 +14,7 @@
 //</div>
 //</div>
 
+
    
     axios.get('https://lambda-times-backend.herokuapp.com/topics')
     
@@ -23,8 +24,7 @@
 
             //This iterates over the topics object
             response.data.topics.forEach(item =>{
-                const newTab = topicsCard(item);
-
+                const newTab = topicsCard(item)
                 //This appends newTab component to DOM
                 topicsBigContainer.appendChild(newTab);
 
@@ -33,7 +33,7 @@
             })
 
         .catch(error => 
-            // debugger;
+            // debugger
             // document.body.innerText = error;
             // the sad path
             // this code runs if the promise fails
