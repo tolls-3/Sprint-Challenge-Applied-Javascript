@@ -61,6 +61,7 @@ function makeCard(data) {
 
   const imageCard = document.createElement("img");
   imageCard.textContent = `${data.authorPhoto}`;
+  imageCard.src = data.authorPhoto;
 
   const authorsNameCard = document.createElement("span");
   authorsNameCard.textContent = `By ${data.authorName}`;
