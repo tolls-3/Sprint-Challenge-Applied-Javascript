@@ -14,31 +14,34 @@
 //</div>
 //</div>
 
+// function getGithubData(username){
 
-
-function getGithubData(username){
+   
     axios.get('https://lambda-times-backend.herokuapp.com/topics')
     
         .then(response => { // THE RESOLVED VALUE
-            debugger;
+            // debugger;
             document.body.innerText=response.data.topics;
-    
-            
-            // the happy path
-            // this code runs if the promise resolves
-        })
-        .catch(error => {
+                
+            })
+
+        .catch(error => 
             // debugger
             document.body.innerText = error;
             // the sad path
             // this code runs if the promise fails
-        });
-    }
+
+            console.error(error)
+            );
+    
 
     function topicsCard(data){
+
         const topicsContainer = document.createElement('div');
         topicsContainer.classList.add('tab');
-        topicsContainer.textContent='topic here';
+        topicsContainer.textContent=data;
 
         return topicsContainer;
     }
+
+   
