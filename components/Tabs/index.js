@@ -33,7 +33,7 @@
             })
 
         .catch(error => 
-            // debugger
+            // debugger;
             // document.body.innerText = error;
             // the sad path
             // this code runs if the promise fails

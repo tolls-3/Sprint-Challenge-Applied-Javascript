@@ -8,12 +8,50 @@
 //
 // <div class="card">
 //   <div class="headline">{Headline of article}</div>
+
 //   <div class="author">
+
 //     <div class="img-container">
+
 //       <img src={url of authors image} />
+
 //     </div>
+
 //     <span>By {authors name}</span>
 //   </div>
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+//
+
+function makeCard(data) {
+  const divCard = document.createElement("div");
+  divCard.classList.add("card");
+
+  const headlineCard = document.createElement("div");
+  headlineCard.classList.add("headline");
+  headlineCard.textContent = `${data.headline}`;
+
+  const authordivCard = document.createElement("div");
+  authordivCard.classList.add("author");
+
+  const imageContainer = document.createElement("div");
+  imageContainer.classList.add("img-container");
+
+  const imageCard = document.createElement("img");
+  imageCard.textContent = `${authorPhoto}`;
+
+  const authorsNameCard = document.createElement("span");
+  authorsNameCard.textContent = `By ${authorName}`;
+
+  divCard.appendChild(headlineCard);
+  divCard.appendChild(authordivCard);
+
+  authordivCard.appendChild(imageContainer);
+  authordivCard.appendChild(authorsNameCard);
+  imageContainer.appendChild(imageCard);
+  
+
+  return divCard;
+}
