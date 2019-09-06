@@ -21,7 +21,7 @@ function Header() {
         headerOne.textContent='Lambda Times';
     
         const spanTemp = document.createElement('span');
-        spanTemp.textContent='98 degrees';
+        spanTemp.textContent='98°';
     
         headerDiv.appendChild(spanDate);
         headerDiv.appendChild(headerOne);
